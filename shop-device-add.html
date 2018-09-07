@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+	   		 确定
+	    	<span class="mui-icon mui-icon-right-nav"></span>
+	  	</a>
+	    <h1 class="mui-title">添加设备</h1>
+	</header>
+<div class="mui-content" id="shopDeviceAdd">
+<form class="mui-input-group" id="addForm">
+  <div class="mui-input-row">
+    <label >选择设备：</label>
+	  <input type="hidden" name="deviceModelId" id="deviceModelId">
+	  <input type="hidden" name="deviceAmount" value="1">
+	  <input type="text" id="deviceModel" data-validator-notNull="请选择设备" placeholder="选择设备..." readonly>
+	  <a class="mui-navigate-right"></a>
+  </div>
+  <div id="selectModel"></div>
+</form>
+</div>
+
+<script src="base/jquery.min.js"></script>
+<script src="base/amazeui.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="lib/else/plug.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/shop-device-add.js"></script>
+</body>
+</html>

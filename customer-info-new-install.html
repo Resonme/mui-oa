@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" type="text/css" href="css/app.css"/>
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="lib/time/mui.picker.min.css"/>
+  <style type="text/css">
+  html,body{
+  	background: #fff;
+  }
+  	.am-table>tbody>tr>td, .am-table>tbody>tr>th, .am-table>tfoot>tr>td, .am-table>tfoot>tr>th, .am-table>thead>tr>td, .am-table>thead>tr>th{
+  		border: none;
+  		vertical-align: middle;
+  	}
+  	.mui-navigate-right.pick-right:after{
+  		top:19px;
+  	}
+  </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="check">
+	   	 完成
+	  </a>
+    <h1 class="mui-title">新增安装</h1>
+</header>
+<div class="mui-content">
+    <form class="mui-input-group" id="installAddForm"> 
+    	<input type="hidden" name="shopDO.shopId" id="shopId"> 
+    	<input type="hidden" name="serviceId" id="serviceId"/>
+    	<div class="mui-input-row" style="height: auto;">
+				<label>店铺名称</label>
+				<input type="text" name="shopDO.shopName" id="shopName" placeholder="请输入店铺名称" data-validator-notNull="请输入店铺名称" data-validator-input="店铺名称不能超过20位" data-validator-length="20"> 
+			</div>
+    	<div class="mui-input-row" style="height: auto;">
+				<label>需要巡逻</label>
+				<div class="mui-input-row mui-radio mui-pull-left mui-left" style="clear:none;margin-left: -20px;">
+					<label>是</label>
+					<input name="shopDO.whetherPatrol" type="radio" value="1"  checked>
+				</div>
+				<div class="mui-input-row mui-radio mui-pull-left mui-left" style="clear:none;">
+					<label>否</label>
+					<input name="shopDO.whetherPatrol" type="radio" value="2">
+				</div>
+			</div>
+			
+    	<div class="mui-input-row">
+				<label>选择区域</label>
+				<input type="hidden" name="shopDO.areaId" id="areaId" data-validator-notNull="请选择区域"> 
+	      <input type="text" id="node" readonly placeholder="请选择区域">
+	 			<a class="mui-navigate-right"></a>
+			</div>
+			<div class="mui-input-row">
+				<label>VIP区域</label>
+				<input type="hidden" name="shopDO.vipAreaId" id="vipAreaId"> 
+	      <input type="text" id="vipAreaName" readonly placeholder="请选择VIP区域，可不选">
+	 			<a class="mui-navigate-right"></a>
+			</div>
+    	<div class="mui-input-row mui-hidden" id="shopNoPanel">
+				<label>店铺编号</label>
+				<div style="float: left;padding: 10px 0;"><span id="areaNo"></span>&nbsp;—&nbsp;</div>
+				<input style="width: 50%;float: left;"  type="number" id="shopNo" maxlength="8" onkeyup="this.value=this.value.replace(/\W/g,'').substring(0,8)" min="4" max="8" data-validator-notNull="请输入店铺编号">
+			</div>
+			
+			<div class="mui-input-row" style="height: auto;">
+				<label>详细地址：</label>
+				<span style="width:8%;float:right;margin-top:10px;" class="mui-icon mui-icon-location" id="map"></span>
+				<textarea style="width:57%;padding-right:5px;"  name="shopDO.shopAddress" id="shopAddress" rows="3" placeholder="点击右边图标选择详细地址" data-validator-notNull="请输入详细地址" readonly="readonly"></textarea>
+				<input type="hidden" name="shopDO.longitude" id="longitude" data-validator-notNull="请选择地图位置" readonly> 
+	      <input type="hidden" name="shopDO.latitude" id="latitude" data-validator-notNull="请选择地图位置" readonly> 
+			</div>
+			
+			<div class="mui-input-row">
+				<label>店铺类型</label>
+				<input type="hidden" id="shopTypes" name="shopDO.shopStyle" />
+				<input type="text" id="shopTypesName" placeholder="请选择店铺类型" readonly="readonly"/>
+				<!--<select id="shopTypes" name="shopDO.shopStyle" data-validator-notNull="请选择店铺类型">
+					<option value="">请选择店铺类型</option>
+				</select>-->
+	 			<a class="mui-navigate-right"></a>
+			</div>
+			
+			<div class="mui-input-row" style="height: auto;">
+				<label>安装设备</label>
+				<input type="text" placeholder="请选择安装设备" id="equipmentAdd" readonly/>
+  			<div id="deviceBox" style="width: 65%;float: right;margin: -8px 0 5px;"></div> 
+       	<input type="hidden" id="deviceModels"  data-validator-notNull="请选择安装设备">
+	 			<a class="mui-navigate-right pick-right"></a>  
+			</div>
+			
+			<div class="mui-input-row" style="height: auto;">
+				<label>套餐信息</label>
+				<input type="hidden" name="shopPackageDO.packageId"  id="packageId"/>
+				<input type="hidden" id="packageFee"/>
+				<input type="text" id="packageName" placeholder="请选择店铺类型" readonly="readonly"/>
+				<!--<select name="shopPackageDO.packageId" id="packageId" data-validator-notNull="请选择套餐信息">
+					<option value="">请选择套餐信息</option>
+				</select>-->
+	 			<a class="mui-navigate-right"></a>
+			</div>
+			
+			
+			
+			<div class="mui-input-row">
+				<label>已收定金/元</label>
+				<input type="number" data-validator-notNull="请输入已收定金" onkeyup="this.value=this.value.replace(/\D/g,'').substring(0,8)" placeholder="请输入已收定金" data-validator-num="已收定金为大于等于0的整数" min="0" name="serviceMoney"> 
+			</div>
+			
+			<div class="mui-input-row" style="height: auto;">
+				<label>安装说明</label>
+				<textarea rows="4" id="serviceContent" placeholder="请输入安装说明" data-validator-notNull="请输入安装说明" data-validator-input="安装说明不能超过100位" data-validator-length="100"></textarea>
+			</div>
+  </form> 
+</div>
+
+
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="lib/else/plug.js"></script>
+<script src="lib/time/mui.picker.min.js"></script>
+<script src="lib/time/mui.poppicker.js"></script>
+<script src="js/customer-info-new-install.js"></script>
+</body>
+</html>

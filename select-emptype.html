@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+				确定
+				<span class="mui-icon mui-icon-right-nav"></span>
+			</a>
+			<h1 class="mui-title">选择员工类型</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+
+			</form>
+		</div>
+		<script src="base/jquery.min.js"></script>
+		<script src="base/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				mui('body').on('tap', '#submit', function() {
+					var selected = $('input[name=empType]:checked'),
+						typeName = "",
+						typeId = "";
+					$(selected).each(function() {
+						typeName += $(this).prev().text() + ",";
+						typeId += $(this).val() + ",";
+					});
+					var opener = plus.webview.currentWebview().opener();
+					mui.fire(opener, 'emptype', {
+						typeName: typeName.substring(0, typeName.length - 1),
+						typeId: typeId.substring(0, typeId.length - 1)
+					});
+					mui.back();
+				});
+				$('input[name=empType]').on('change', function() {
+					if($(this).is(':checked')) {
+						if($(this).val() == 5) {
+							$('input[name=empType][value=1],input[name=empType][value=2],input[name=empType][value=3],input[name=empType][value=4],input[name=empType][value=10],input[name=empType][value=11]').attr('checked', false);
+						} else if($(this).val() == 11) {
+							$('input[name=empType][value=1],input[name=empType][value=2],input[name=empType][value=3],input[name=empType][value=4],input[name=empType][value=10],input[name=empType][value=5]').attr('checked', false);
+						} else {
+							$('input[name=empType][value=5],input[name=empType][value=11]').attr('checked', false);
+						}
+					}
+				});
+
+				var cw = plus.webview.currentWebview();
+				var parentId = cw.parentId;
+				var typeId = cw.typeId;
+				$('form').html(
+					'<div class="mui-input-row mui-checkbox">' +
+					'	<label>业务人员</label>' +
+					'	<input name="empType" value="1" type="checkbox">' +
+					'</div>' +
+					'<div class="mui-input-row mui-checkbox">' +
+					'	<label>安装维护人员</label>' +
+					'	<input name="empType" value="2" type="checkbox">' +
+					'</div>' +
+					'<div class="mui-input-row mui-checkbox">' +
+					'	<label>财务人员</label>' +
+					'	<input name="empType" value="4" type="checkbox">' +
+					'</div>' +
+					'<div class="mui-input-row mui-checkbox">' +
+					'	<label>巡逻人员</label>' +
+					'	<input name="empType" value="5" type="checkbox">' +
+					'</div>' +
+					'<div class="mui-input-row mui-checkbox">' +
+					'	<label>区域管理员</label>' +
+					'	<input name="empType" value="10" type="checkbox">' +
+					'</div>'
+				);
+				$('#alarmType').remove();
+				if(parentId == 0) {
+					$('form').append(
+						'<div class="mui-input-row mui-checkbox" id="alarmType">' +
+						'<label>接警人员</label>' +
+						'<input name="empType" value="11" type="checkbox">' +
+						'</div>'
+					);
+					$('input[name=empType]').off('click').on('change', function() {
+						if($(this).is(':checked')) {
+							if($(this).val() == 5) {
+								$('input[name=empType][value=1],input[name=empType][value=2],input[name=empType][value=3],input[name=empType][value=4],input[name=empType][value=10],input[name=empType][value=11]').attr('checked', false);
+							} else if($(this).val() == 11) {
+								$('input[name=empType][value=1],input[name=empType][value=2],input[name=empType][value=3],input[name=empType][value=4],input[name=empType][value=10],input[name=empType][value=5]').attr('checked', false);
+							} else if($(this).val() == 10) {
+								$('input[name=empType][value=1],input[name=empType][value=2],input[name=empType][value=3],input[name=empType][value=4],input[name=empType][value=11],input[name=empType][value=5]').attr('checked', false);
+							} else {
+								$('input[name=empType][value=5],input[name=empType][value=10],input[name=empType][value=11]').attr('checked', false);
+							}
+						}
+					});
+				}
+				if($.trim(typeId)) {
+					var arg = typeId.split(',');
+					$(arg).each(function() {
+						console.log(this);
+						$('input[name=empType][value=' + this + ']').attr('checked', true);
+					});
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

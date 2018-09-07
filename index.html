@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <style type="text/css">
+  	.am-navbar-default a:hover,
+  	.am-navbar-default a:focus{
+  		color: #929292;
+  	}
+  	
+  </style>
+</head>
+<body data-page="index">
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">标题</h1>
+	</header>
+<!--<header data-am-widget="header" class="am-header am-header-default am-header-fixed am-no-layout">
+  <h1 class="am-header-title">
+      
+  </h1>
+</header>-->
+<!--header end -->
+
+
+<!--body start -->
+
+<div id="index" class="mui-content">
+  <!-- tab1 start  -->
+  <div class="am-page">
+    <ul class="am-list am-list-static menu" id="messageMenu">
+    </ul>
+  </div>
+  <!-- tab1 end  -->
+
+  <!-- tab2 start  -->
+  <div class="am-page">
+    <ul class="am-list am-list-static menu am-margin-bottom-sm" id="customerMenu1"></ul>
+    <ul class="am-list am-list-static menu am-margin-bottom-sm" id="customerMenu2"></ul>
+    <ul class="am-list am-list-static menu am-margin-bottom-sm" id="customerMenu3"></ul>
+  </div>
+  <!-- tab2 end  -->
+
+  
+
+  <!-- tab3 start  -->
+  <div class="am-page">
+    <ul class="am-list am-list-static menu" id="dataTabs">
+    </ul>
+  </div>
+  <!-- tab3 end  -->
+
+  <!-- 个人设置 start  --> 
+  <div class="am-page"> 
+  	<ul class="mui-table-view">
+			<li class="mui-table-view-cell">
+				<a>姓名<span class="mui-pull-right" id="loginName">Hbuilder</span></a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a>所属公司<span class="mui-pull-right" id="loginCompanyName"></span></a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a>所属区域<span class="mui-pull-right" id="loginAreaName"></span></a>
+			</li>
+		</ul>
+		<ul class="mui-table-view" style="margin-top: 20px;">
+			<li class="mui-table-view-cell">
+				<a>手机号码<span class="mui-pull-right" id="loginPhone">Hbuilder</span></a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right" id="editPassword">修改密码<span class="mui-pull-right"></span></a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a>当前版本<span class="mui-pull-right" id="version"></span></a>
+			</li>
+		</ul>
+   <div class="am-margin-vertical-lg am-text-center"> 
+    <div class="am-cf am-margin-horizontal-sm">
+      <button type="button" id="loginOut" class="am-btn am-btn-default am-btn-block am-btn-lg" style="padding: 8px 0;font-size: 18px;"><span class="am-icon-share-square-o"></span>退出</button> 
+    </div>
+   </div> 
+  </div> 
+  <!-- 个人设置 end  -->  
+</div>
+
+
+<!--body end -->
+
+
+<!--footer start -->
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default " style="border-top:1px solid #ccc;">
+  <ul class="am-navbar-nav am-cf am-avg-sm-4">
+      <li data-rel="0">
+        <a>
+            <span class="am-icon-bell"></span>
+            <span class="am-navbar-label">消息跟踪</span>
+        </a>
+      </li>
+      <li data-rel="1">
+        <a>
+            <span class="am-icon-folder-open"></span>
+            <span class="am-navbar-label">业务相关</span>
+        </a>
+      </li>
+      <li data-rel="2">
+        <a>
+            <span class="am-icon-database"></span>
+            <span class="am-navbar-label">数据统计</span>
+        </a>
+      </li>
+      <li data-rel="3">
+        <a>
+            <span class="am-icon-cog"></span>
+            <span class="am-navbar-label">个人设置</span>
+        </a>
+      </li>
+  </ul>
+</div>
+<!-- footer end -->
+
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/amazeui.min.js"></script>
+<script src="base/amazeui.widgets.helper.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

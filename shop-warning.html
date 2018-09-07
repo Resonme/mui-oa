@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="lib/dropload/dropload.css"/>
+  <link rel="stylesheet" type="text/css" href="lib/time/mui.picker.min.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">警情查询</h1>
+	</header>
+<div class="mui-content">
+	<div class="panel content-bg fixed-time-search">
+	  <form class="am-form am-form-horizontal">
+	    <div class="am-form-group">
+	      <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">起始日期</label>
+	      <div class="am-u-sm-8">
+	        <input type="text" id="startDate" name="sTime" class="date input-select" readonly>
+	      </div>
+	    </div>
+	    <div class="am-form-group">
+	      <label for="doc-ipt-pwd-2" class="am-u-sm-4 am-form-label">截至日期</label>
+	      <div class="am-u-sm-8">
+	        <input type="text" id="endDate" name="eTime" class="date input-select" readonly>
+	      </div>
+	    </div>
+	    <div class="am-form-group am-margin-horizontal-sm">
+	      <button type="button" class="am-btn am-btn-default am-btn-block" id="search"><span class="am-icon-search"></span>查询</button>
+	    </div>
+	  </form>
+	</div>
+	<div data-tab-panel-1="" class="am-tab-panel fixed-time-search-body" id="shop-warning"> 
+	  
+		 <ul class="am-list" id="list"></ul>
+	</div> 
+</div>
+
+<script src="base/jquery.min.js"></script>
+<script src="base/amazeui.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="lib/dropload/dropload.min.js"></script>
+<script src="lib/time/mui.picker.min.js"></script> 
+<script src="base/o2o.js"></script>
+<script src="js/shop-warning.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+</head> 
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+	   	 保存
+	    <span class="mui-icon mui-icon-right-nav"></span>
+	  </a>
+    <h1 class="mui-title">店铺类型操作</h1>
+</header>
+
+<div class="mui-content">
+    <form class="mui-input-group" id="form">
+			<div class="mui-input-row">
+				<label>类型名称</label>
+        <input type="hidden" name="shopTypeId">
+				<input type="text" name="typeName" placeholder="请输入类型名称" data-validator-notNull="请输入类型名称" data-validator-input="类型名称长度不能超出10位" data-validator-length="10">
+			</div>
+		</form>
+</div>
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/customer-shop-type-add.js"></script>
+<script type="text/javascript">
+mui.init({
+	swipeBack:true
+});
+	
+</script>
+</body>
+</html>

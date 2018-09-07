@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hello MUI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<style>
+		button.mui-btn-block{
+			height:40px;
+			line-height: 40px;
+			padding: 0;
+		}
+		 .mui-btn-primary{
+		 	  color: #fff;
+			  border: 1px solid #00bcd4;
+			  background-color: #00bcd4;
+		 }
+		 .mui-btn-outlined {
+		  	background-color: transparent;
+		}
+		.mui-btn-outlined.mui-btn-blue, .mui-btn-outlined.mui-btn-primary{
+		 	color: #00bcd4;
+		}
+		.fiexd-footer{
+			position: fixed;
+			width: 100%;
+			height: 50px;
+			left: 0;
+			bottom: 0;
+			background: #000000;
+			padding: 5px 15px;
+		}
+		.fiexd-footer>button{
+			width: 100%;
+			margin: 0;
+		}
+		.mui-content{
+			padding-bottom: 60px;
+		}
+		:-moz-placeholder {
+		    color: #ddd;  
+		}
+		
+		::-moz-placeholder {
+		    color: #ddd;
+		}
+		
+		input:-ms-input-placeholder,
+		textarea:-ms-input-placeholder {
+		    color: #ddd;
+		}
+		
+		input::-webkit-input-placeholder,
+		textarea::-webkit-input-placeholder {
+		    color: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-action-back mui-icon-left-nav mui-pull-left"></a>
+		<div class="mui-title">
+			<div class="mui-search">
+				<form onsubmit="return false;" id="searchForm">
+					<input type="search" class="mui-input-clear" id="search" placeholder="输入客户名称...">
+				</form>
+			</div>
+		</div>
+	</header>
+	<div class="mui-content">
+		<form class="mui-input-group" id="customersContent">
+		</form>
+		<div class="fiexd-footer">
+			<button class="mui-btn mui-btn-primary mui-btn-block" id="confirm">确认</button>
+		</div>
+	</div>
+	
+	<script src="base/jquery.min.js"></script>
+	<script src="base/mui.min.js"></script>
+	<script src="base/o2o.js"></script> 
+	<script src="js/shop-changeLeader.js"></script>
+	<script>
+		mui.init();
+	</script>
+</body>
+</html>

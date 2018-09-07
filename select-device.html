@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+				确定
+				<span class="mui-icon mui-icon-right-nav"></span>
+			</a>
+			<h1 class="mui-title">选择设备</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="content">
+			</ul>
+		</div>
+		<script src="base/jquery.min.js"></script>
+		<script src="base/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				mui('body').on('tap', '#submit', function() {
+					var selected = $('input[name=device]:checked');
+					var devices = [], b=0;
+					$(selected).each(function() {
+						var _li = $(this).parent().parent();
+						var num = _li.find('.deviceNumber').val();
+						if(num > 0){
+							var device = {
+								deviceModelId:$(this).val(),
+								deviceName:_li.find('.deviceName').text(),
+								deviceAmount:num
+							}
+							devices.push(device);
+						}else{
+							b = 1;
+						}
+					});
+					if(b){
+						plus.nativeUI.toast('选择设备数量必须大于0！');
+						return;
+					}
+					console.log(devices);
+					var opener = plus.webview.currentWebview().opener();
+					mui.fire(opener, 'deviceChange', {
+						devices:devices
+					});
+					mui.back();
+				});
+
+				var cw = plus.webview.currentWebview();
+				var devices = cw.devices;
+				var checkeds = cw.checkeds;
+				var $html = "";
+				$(devices).each(function(){
+					var _self = this;
+					var checked ="", num = 0;
+					if(checkeds){
+						checkeds = JSON.parse(cw.checkeds);
+						console.log(checkeds);
+						$(checkeds).each(function(){
+							if(_self.deviceModelId == this.deviceModelId){
+								checked = "checked";
+								num = this.deviceAmount;
+							}
+						});
+					}
+					$html += 
+					'<li class="mui-table-view-cell" style="padding-right:50px;">' +
+					'	<div class="mui-checkbox" style="margin-right:-50px;">'+
+					'		<input name="device" type="checkbox" style="margin-top:10px;" value="' + this.deviceModelId + '" '+checked+'><span class="deviceName">' + this.deviceType + '（' + this.deviceModel + '）</span>' +
+					'	</div>'+
+					'	<div class="mui-numbox" style="display:block;width: 100px;height: 30px;padding:0 30px;margin-top:5px;">' +
+					'		<button class="mui-btn mui-btn-numbox-minus" type="button" style="width: 30px;">-</button>' +
+					'		<input class="mui-input-numbox deviceNumber" value="'+num+'" type="number" onkeyup="this.value=this.value.replace(/\\D/g,\'\').substring(0,3);" class="deviceAmount" value="1"/>' +
+					'		<button class="mui-btn mui-btn-numbox-plus" style="width: 30px;" type="button">+</button>' +
+					'	</div>' +
+					'</li>';
+				});
+				$('#content').html($html);
+				mui('#content').on('tap','.mui-btn-numbox-minus', function(){
+					var _num = $(this).next();
+					var _text = parseInt(_num.val()); 
+					 _num.val(_text<=1?0:_text-1);
+				});
+				mui('#content').on('tap','.mui-btn-numbox-plus', function(){
+					var _num = $(this).prev();
+					var _text = parseInt(_num.val()); 
+					 _num.val(_text>=998?999:_text+1);
+				});
+				mui('#content').on('change','input[name=device]', function(){
+					var _li = $(this).parent().parent();
+					_li.find('.deviceNumber').val($(this).is(':checked')?1:0);
+					
+				});
+			});
+		</script>
+	</body>
+
+</html>

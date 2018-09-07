@@ -1,0 +1,135 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+</head>
+<style type="text/css">
+	html,body{
+		height: 100%;
+		background: #000;
+	}
+	#qrcode{
+		position: absolute;
+		top: 44px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 9;
+	}
+	.mui-bar{
+		background: #000;
+		border: none;
+  		box-shadow: none;
+	}
+</style>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">扫一扫添加管理人</h1>
+</header>
+<div id="qrcode">
+	<div id="bcid"></div>
+</div>
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/o2o.js"></script>
+<script type="text/javascript">
+var scan = null;
+mui.init({
+	beforeback: function() {
+		if(scan){
+			scan.cancel();
+			scan.close();
+		}
+	}
+});
+mui.plusReady(function(){
+	var getResult = function(phone){
+		var cw = plus.webview.currentWebview();
+		var shopId = cw.shopId;
+		o2o.request({
+			url: o2o.path.customerQueryCustomerByPhone,
+			data:{
+				phone: phone
+			},
+			noWin:true,
+			success: function(respones) {
+				var account = respones.account;
+				if($.trim(account)){
+					mui.openWindow({
+						url:"shop-manage-setting.html",
+						extras:{
+							account : account,
+							shopId :shopId
+						}
+					});
+					//location.href = 'shop-manage-setting.html?shopId='+cw.shopId+'&phone='+account.phone;
+				}else{
+					o2o.confirm('未查询到该客户信息，是否重新扫描！', function(msg){
+						if(msg=="yes"){
+							createQrcode();
+						}else{
+							mui.back();
+						}
+					});
+				}
+			},
+			fail: function(code, error) {
+				o2o.prompt(error); 
+			}
+		});
+	};
+	var onmarked = function(type, result){
+		var text = '未知: ';
+		switch(type){
+			case plus.barcode.QR:
+			text = 'QR: ';
+			break;
+			case plus.barcode.EAN13:
+			text = 'EAN13: ';
+			break;
+			case plus.barcode.EAN8:
+			text = 'EAN8: '; 
+			break;
+		}
+		console.log(type,result);
+		scan.cancel();
+		scan.close();
+		getResult(result);
+	};
+	console.log('创建扫描');
+	var createQrcode = function(){
+		scan = new plus.barcode.Barcode('qrcode');
+		scan.onmarked = onmarked;
+		scan.start();
+	}
+	
+	mui.ready(function(){
+		createQrcode();
+	});
+	
+	/*var backButtonPress=0;
+	plus.key.removeEventListener("backbutton", function(){});
+	plus.key.addEventListener("backbutton", function() {
+		backButtonPress++;
+		if (backButtonPress > 1) {
+			plus.runtime.quit();
+		} else {
+			plus.nativeUI.toast("再按一次退出应用程序！");
+		}
+		setTimeout(function() {
+			backButtonPress = 0;
+		}, 1000);
+	}, false); */
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="hostBtn">
+		   	 确定
+		  </a>
+	    <h1 class="mui-title">主机防区设置</h1>
+	</header>
+<div class="mui-content">
+	<form class="mui-input-group" id="hostForm">
+		<div class="mui-input-row">
+			<label>防区序号</label>
+    	<input type="text" id="channelIndex" name="channelIndex" placeholder="请输入防区序号" data-validator-notNull="请输入防区序号" readonly>
+		</div>
+		<div class="mui-input-row">
+			<label>防区名称</label>
+    	<input type="text" name="installationSite" placeholder="请输入防区名称" data-validator-notNull="请输入防区名称" data-validator-inpu="防区名称长度不能超出10位" data-validator-length="10">
+		</div>
+	</form>
+</div>
+
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/shop-alarm-add.js"></script>
+</body>
+</html>

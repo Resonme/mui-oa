@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <style type="text/css">
+  	input[type=search]{
+  		width: 90%;
+  	}
+		:-moz-placeholder {
+		    color: #ddd;  
+		}
+		::-moz-placeholder {
+		    color: #ddd;
+		}
+		input:-ms-input-placeholder,
+		textarea:-ms-input-placeholder {
+		    color: #ddd;
+		}
+		input::-webkit-input-placeholder,
+		textarea::-webkit-input-placeholder {
+		    color: #ddd;
+		}
+		.mui-table-view-cell{
+			padding-right: 110px;
+		}
+		#pullup-container{
+			position: absolute;
+			top: 44px;
+			bottom: 0;
+			width: 100%;
+    	overflow-y: scroll;
+		}
+  </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	<a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="add">
+   	 添加
+    <span class="mui-icon mui-icon-right-nav"></span>
+  </a>
+	<h1 class="mui-title">
+		<div class="mui-search">
+			<form onsubmit="return false;"><input type="search" class="mui-input-clear" id="search" placeholder="输入员工姓名、手机号..."></form>
+		</div>
+	</h1>
+</header>
+<div id="pullup-container" class="mui-scroll-wrapper">
+    <div class="mui-scroll">
+			<ul class="mui-table-view" id="customerEmpList"></ul> 
+    </div>
+</div>
+
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/customer-emp-list.js"></script>
+</body>
+</html>

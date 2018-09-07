@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" href="css/repair.css">
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=f83fa3d5b9d90b4bded960514e98e436"></script> 
+  <title>首页</title>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">选择处理方式</h1>
+	</header>
+  <!--header start  -->
+<!--<header data-am-widget="header" class="am-header am-header-default am-header-fixed">
+  <div class="am-header-left am-header-nav">
+      <a href="javascript:history.go(-1)">
+          <img class="am-header-icon-custom" src="fonts/left.svg">
+      </a>
+  </div>
+  <h1 class="am-header-title">选择处理方式</h1>
+</header>-->
+<!--header end  -->
+
+<div class="mui-content">
+  <div class="nfc">
+  	<img src="image/nfc.png" alt="" />
+  	<div class="am-text-primary am-margin-sm">
+  		打卡操作<br />
+  		请将手机靠近NFC标签，完成打卡<br />
+  	</div>
+  </div>
+  <div class="am-text-center title-info">如果NFC刷卡失败，请点击"GPS"，完成打卡</div> 
+  <div class="gps">
+  	<img src="image/gps.png" alt="" />
+  	<div class="am-text-danger am-margin-sm">
+  		NFC卡丢失或损坏时请点击这里完成打卡<br />
+
+  	</div>
+  </div>
+</div><br />
+<script src="lib/pos/gps.js"></script>
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/o2o.js"></script>
+
+<script src="js/shop-repair-do.js"></script>
+</body>
+</html>

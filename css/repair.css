@@ -1,0 +1,18 @@
+.nfc,
+.gps{
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px;
+}
+.nfc>img,
+.gps>img{
+	width: 40%;
+	height: auto;
+}	
+.title-info{
+	background: #f5f5f9;
+	padding: .8rem 1.5rem; 
+}
+.select-img{
+	background: url(../../../assets/i/select.png) no-repeat;
+}

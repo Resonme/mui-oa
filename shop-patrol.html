@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <title>首页</title>
+  <style type="text/css">
+  body,html{
+  	font-size: 10px;
+  	height: 100%;
+  }
+  	#patrol{
+  		position: absolute;
+  		top: 360px;
+  		width: 100%;
+  		bottom: 0;
+			overflow-y: auto;
+  	}
+  	.am-datepicker{
+  		margin-top: 4px;
+  	}
+  </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">巡逻记录</h1>
+	</header>
+  <!--header start  -->
+<!--<header data-am-widget="header" class="am-header am-header-default am-header-fixed">
+  <div class="am-header-left am-header-nav">
+      <a href="javascript:history.go(-1)">
+          <img class="am-header-icon-custom" src="fonts/left.svg">
+      </a>
+  </div>
+  <h1 class="am-header-title">巡逻记录</h1>
+</header>-->
+<!--header end  -->
+<div class="datepicker-fixed" class="mui-content">
+  <input type="text" style="top:0;" class="am-form-field" id="datepicker" placeholder="日历组件" data-am-datepicker="{autoClose:false,showAlways:true}" readonly/>
+</div>
+<div class="panel" id="patrol">
+  
+</div>
+
+<script src="base/jquery.min.js"></script>
+<script src="base/amazeui.min.js"></script>
+<script src="base/amazeui.widgets.helper.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/shop-patrol.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('#datepicker').trigger('click');
+});
+</script>
+</body>
+</html>

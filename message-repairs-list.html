@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <style type="text/css">
+  	html,body{
+  		position: relative;
+  		height: 100%;
+  	}
+  	#pullrefresh{
+  		padding-top: 83px;
+  	}
+  	.mui-backdrop{
+  		top: 83px;
+  	}
+  	.mui-plus-pullrefresh .mui-scroll-wrapper, .mui-plus-pullrefresh .mui-slider-group{
+  		top: 83px;
+  	}
+  	
+		.mui-popover .mui-row>[class*=mui-col-xs]{
+			height: 300px;
+		}
+  </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <a class="mui-icon mui-icon-search mui-pull-right" id="toSearch"></a>
+    <h1 class="mui-title">维修单列表</h1>
+</header>
+<div class="mui-row mui-text-center o2o-select">
+	<div class="mui-col-xs-6 o2o-select-item" data-href="#areaPopover">
+		<span id="areaText">区域选择</span><span class="icon-down"></span>
+	</div>
+	<div class="mui-col-xs-6 o2o-select-item" data-href="#statePopover">
+		<span id="stateText">状态选择</span><span class="icon-down"></span>
+	</div>
+</div>
+<div class="mui-scroll-wrapper" id="pullrefresh">
+    <div class="mui-scroll">
+        <ul class="mui-table-view o2o-list" id="list"></ul> 
+    </div>
+</div>
+
+<div id="areaPopover" class="mui-popover">
+	<div class="mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <ul class="mui-table-view o2o-list-check" id="areaPanel">
+					<li class="mui-table-view-cell mui-active"><a><span class="text">全部</span><span class="mui-badge mui-badge-inverted">10</span></a></li>
+				</ul>
+    </div>
+	</div>
+</div>
+
+<div id="statePopover" class="mui-popover">
+	<ul class="mui-table-view o2o-list-check" id="statePanel">
+		<li class="mui-table-view-cell mui-active"><a><span class="text">全部</span></a><span class="mui-badge mui-badge-inverted">10</span></li>
+		<li class="mui-table-view-cell" data-repairstate="0"><a><span class="text">待指派</span></a><span class="mui-badge mui-badge-inverted">10</span></li>
+		<li class="mui-table-view-cell" data-repairstate="1"><a><span class="text">已派单</span></a><span class="mui-badge mui-badge-inverted">10</span></li>
+		<li class="mui-table-view-cell" data-repairstate="2"><a><span class="text">待评价</span></a><span class="mui-badge mui-badge-inverted">10</span></li>
+		<li class="mui-table-view-cell" data-repairstate="3"><a><span class="text">已解决</span></a><span class="mui-badge mui-badge-inverted">10</span></li>
+	</ul>
+</div>
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="lib/time/time.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/message-repairs-list.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" type="text/css" href="css/amazeui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/app.css"/>
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <style type="text/css">
+  	.mui-content{
+  		background: #fff;
+  	}
+  </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">在线状态统计</h1>
+</header>
+<div class="am-page data-list-item mui-content" id="list"> 
+	<ul class="am-list am-list-static"> 
+		<li class="am-text-success" onclick="window.location.href='customer-business-list.html?type=3'">
+			在线 <span class="am-text-warning" id="state3"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<li class="am-text-danger" onclick="window.location.href='customer-business-list.html?type=4'">
+			离线 <span class="am-text-warning" id="state4"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<li class="am-text-danger" onclick="window.location.href='customer-business-list.html?type=8'">
+			过去一天曾离线 <span class="am-text-warning" id="state8"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<li class="am-text-danger" onclick="window.location.href='customer-business-list.html?type=9'">
+			过去一周曾离线 <span class="am-text-warning" id="state9"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+	</ul>
+</div> 
+<script src="base/jquery.min.js"></script>
+<script src="base/amazeui.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/customer-online.js"></script>
+</body>
+</html>

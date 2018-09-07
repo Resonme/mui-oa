@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">布撤防统计</h1>
+</header>
+<div class="am-page data-list-item mui-content" id="list"> 
+	<ul class="am-list am-list-static"> 
+		<li class="am-text-success" onclick="window.location.href='customer-business-list.html?type=1'">
+			布防 <span class="am-text-warning" id="state1"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<li class="am-text-danger" onclick="window.location.href='customer-business-list.html?type=2'">
+			撤防 <span class="am-text-warning" id="state2"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<li class="am-text-danger" onclick="window.location.href='customer-business-list.html?type=6'">
+			布防异常 <span class="am-text-warning" id="state6"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<li class="am-text-danger" onclick="window.location.href='customer-business-list.html?type=7'">
+			撤防异常 <span class="am-text-warning" id="state7"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+		<!--<li class="am-text-warning" onclick="window.location.href='customer-business-list.html?type=10'">
+			过去一天未明 <span class="am-text-warning" id="state10"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>-->
+		<li class="am-text-warning" onclick="window.location.href='customer-business-list.html?type=5'">
+			未明 <span class="am-text-warning" id="state5"> (0) </span>
+			<span class="am-icon-chevron-circle-right am-fr"></span>      
+		</li>
+	</ul>
+</div> 
+
+<script src="base/jquery.min.js"></script>
+<script src="base/amazeui.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/customer-defence.js"></script>
+</body>
+</html>

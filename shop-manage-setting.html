@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hello MUI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<style>
+		button.mui-btn-block{
+			height:40px;
+			line-height: 40px;
+			padding: 0;
+		}
+		 .mui-btn-primary{
+		 	  color: #fff;
+			  border: 1px solid #00bcd4;
+			  background-color: #00bcd4;
+		 }
+		 .mui-btn-outlined {
+		  	background-color: transparent;
+		}
+		.mui-btn-outlined.mui-btn-blue, .mui-btn-outlined.mui-btn-primary{
+		 	color: #00bcd4;
+		}
+		.mui-content{
+			position: relative;
+		}
+		.customer{
+			margin: 50px 0;
+		}
+		img{
+			width: 100px;
+			height: 100px;
+			margin: 20px;
+			border: none;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">客户信息</h1>
+	</header>
+	<div class="mui-content">
+		<div class="mui-content-padded mui-text-center customer">
+			<img src="image/head.png" alt="" id="customerHead"/>
+			<p id="customerName"></p>
+			<p id="phone"></p>
+			<input type="hidden" id="accountId" />
+		</div>
+		<div class="mui-content-padded">
+		    <button class="mui-btn mui-btn-primary mui-btn-block setPerson" data-type="0">添加为负责人</button>
+			<button class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined setPerson" data-type="1">添加为联系人</button>
+		</div>
+	</div>
+	
+	<script src="base/jquery.min.js"></script>
+	<script src="base/mui.min.js"></script>
+	<script src="base/o2o.js"></script> 
+	<script src="js/shop-manage-setting.js"></script>
+</body>
+</html>

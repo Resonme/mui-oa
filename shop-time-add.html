@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="lib/time/mui.picker.min.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+		   	 确定
+		  </a>
+	    <h1 class="mui-title">布撤防时间</h1>
+	</header>
+<div class="mui-content" id="installTimeAdd">
+  <ul class="am-list am-list-static"> 
+    <li class="active" data-downselect="[{label:'周一', id:'1'},{label:'周二', id:'2'},{label:'周三', id:'3'},{label:'周四', id:'4'},{label:'周五', id:'5'},{label:'周六', id:'6'},{label:'周日', id:'7'}]" data-downselect-type="checkbox" data-result-name="#weekday">
+       <div class="am-cf li-tnt">
+          <div class="am-u-sm-2 am-text-right line-active">
+            <span class="am-icon-refresh"></span>
+          </div>
+          <div class="am-u-sm-8">
+            <div>
+              <p>重复</p>
+              <p class="ps" id="weekday">每天</p>
+            </div>
+          </div>
+          <div class="am-u-sm-2 am-text-right">
+            <div>
+              <span class="am-icon-chevron-circle-right"></span>
+            </div>
+          </div>
+       </div>
+    </li>
+    <li class="active" id="startLabel">
+       <div class="am-cf li-tnt">
+          <div class="am-u-sm-2 am-text-right line-active">
+            <span class="am-icon-calendar"></span>
+          </div>
+          <div class="am-u-sm-8">
+            <div>
+              <p>布防时间</p>
+              <p class="ps" id="timestart">22:00</p>
+			  <input id="date1" type="hidden" value="22:00">
+            </div>
+          </div>
+          <div class="am-u-sm-2 am-text-right">
+            <div><label for="date1" class="am-icon-chevron-circle-right"></label></div>
+          </div>
+       </div>
+    </li>
+    <li class="active" id="endLabel">
+       <div class="am-cf li-tnt">
+          <div class="am-u-sm-2 am-text-right line-active">
+            <span class="am-icon-calendar"></span>
+          </div>
+          <div class="am-u-sm-8">
+            <div>
+              <div class="am-fl">
+                  <p>撤防时间</p>
+                  <p class="ps" id="timeend">07:30</p>
+			  		<input id="date2" type="hidden" value="07:30">
+              </div>
+              <!--<p class="ps" style="margin-top:24px;">
+                <input id="r2" type="radio" name="r" value="0" checked>
+                <label for="r2">次日</label>
+                <input id="r1" type="radio" name="r" value="1">
+                <label for="r1" class="am-margin-left-sm">当日</label>
+              </p>-->
+            </div>
+          </div>
+          <div class="am-u-sm-2 am-text-right">
+            <div><label class="am-icon-chevron-circle-right"></label></div>
+          </div>
+       </div>
+    </li>
+   </ul>
+</div>
+<!--body end -->
+
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="lib/else/plug.js"></script>
+<script src="base/o2o.js"></script>
+<script src="lib/time/mui.picker.min.js"></script> 
+<script src="js/shop-time-add.js"></script>
+</body>
+</html>

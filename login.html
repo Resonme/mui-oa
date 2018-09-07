@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+	<title>Hello MUI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/amazeui.min.css">
+	<link rel="stylesheet" href="css/app.css">
+	<!--<link rel="stylesheet" type="text/css" href="css/reset.css"/>-->
+  <title>登录</title>
+<style type="text/css">
+html,body{
+  height: 100%;
+}
+body{
+  position: relative;
+  background: url(image/background_login.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+#loginForm{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -170px;
+    height: 320px;
+}
+#loginForm label{
+  color: #ddd;
+}
+#loginForm h1{
+  font-size: 3.8rem;
+  margin: 0;
+}
+#loginForm h3{
+  font-weight: 500;
+  color: #ddd;
+}
+#loginForm input[type=text],
+#loginForm input[type=number],
+#loginForm input[type=password]{
+  background: rgba(0,0,0,0);
+  color: #ddd;
+}
+.login-bg{
+  position: absolute;
+  min-height: 100%;
+  z-index: -1;
+}
+</style>
+</head>
+<body data-page="login" id="loginBody">
+<!--body start -->
+<form class="am-form am-margin-horizontal-lg" id="loginForm">
+  <fieldset>
+    <h1 class="am-margin-top-lg am-text-model am-text-center">臻总管</h1><br />
+    <!--<h3 class="am-margin-bottom-lg am-text-center">OA(内部)</h3>--> 
+    <div id="msgcount"></div>
+    <input type="hidden" name="type" value="1">
+    <div class="am-form-group">
+      <input type="number"  name="accountNo" placeholder="请输入用户名" data-validator-notNull="请输入用户名">
+    </div>
+
+    <div class="am-form-group">
+      <input type="password" name="initialPassword" placeholder="请输入密码" data-validator-notNull="请输入密码">
+    </div>
+    <div class="am-form-group am-cf">
+      <input id="r1" type="checkbox" value="0">
+      <label for="r1" class="am-checkbox-inline am-fl">记住密码</label>
+      <!--<input id="r2" type="checkbox" value="1"> 
+      <label for="r2" class="am-checkbox-inline am-fr">自动登录</label>-->
+      <a href="javascript:mui.openWindow({url:'forget-password.html'})" class="am-text-sm am-fr">忘记密码？</a>
+    </div>
+    <!--<a href="forget-password.html" class="am-block am-margin-top-lg am-text-sm">忘记密码？</a>-->
+    <p><button id="loginSubmit" type="button" class="am-btn am-btn-default am-btn-block am-margin-vertical-lg">登 录</button></p>
+  </fieldset>
+</form>
+<!--body end -->
+<script src="base/jquery.min.js"></script>
+<script src="base/amazeui.min.js"></script>   
+<script src="base/mui.min.js"></script>
+<script src="lib/md5/md5.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

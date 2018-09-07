@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			.am-text-center{
+				text-align: center;
+			}
+			.am-margin-left-lg{
+				margin-left: 20px;	
+			}
+			.am-margin-right-sm{
+				margin-right: 15px;
+			}
+			#customerSchedulingArea .am-panel-bd label{
+				font-size: 13px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+			   	 保存
+			    <span class="mui-icon mui-icon-right-nav"></span>
+			  </a>
+		    <h1 class="mui-title"></h1>
+		</header>
+		<div class="mui-content">
+		  <form class="mui-input-group" id="empAdd">
+			      <div class="mui-input-row"> 
+			        <label>所属区域：</label> 
+			          <input type="hidden" name="areaId"><input  type="text" class="input-select" id="areaName" placeholder="请选择所属区域"  disabled="disabled"><i></i>
+			      </div>  
+			      <div class="mui-input-row"> 
+			        <label>员工姓名：</label> 
+			          <input type="text" name="employeeName" placeholder="员工姓名" data-validator-notNull="请输入员工姓名" data-validator-input="员工姓名长度不能超出10位" data-validator-length="10">  
+			      </div> 
+			      <div class="mui-input-row" id="checkphone"> 
+			        <label>联系电话：</label> 
+			        <input type="text" name="phone" placeholder="联系电话" data-validator-notNull="请输入联系电话" data-validator-phone="联系电话格式有误"> 
+			      	<i></i>
+			      </div> 
+			      <div class="mui-input-row"> 
+			        <label>员工类型：</label> 
+			        <input type="hidden" name="roleIds" data-validator-notNull="请选择员工类型"> 
+			        <input type="text" id="roleName" placeholder="选择员工类型" readonly>
+					<a class="mui-navigate-right"></a>
+			      </div> 
+			      <div class="mui-input-row mui-hidden" id="selectArea">  
+			        <label>负责区域：</label>  
+			        <!--<select id="areaIdsStr" multiple="multiple"></select>-->
+			        <input type="hidden" id="areaIdsStr">
+			        <input type="text" id="areaIdsName" placeholder="选择负责区域" readonly>
+					<a class="mui-navigate-right"></a>
+			      </div> 
+			      <div class="mui-input-row" style="height: auto;">
+					<label>部门经理</label>
+					<div class="mui-input-row mui-radio mui-pull-left mui-left" style="clear:none;margin-left: -20px;">
+						<label>是</label>
+						<input name="isManager" type="radio" value="1">
+					</div>
+					<div class="mui-input-row mui-radio mui-pull-left mui-left" style="clear:none;">
+						<label>否</label>
+						<input name="isManager" type="radio" value="0"checked>
+					</div>
+				  </div>
+			     <!-- <div class="mui-input-row" style="height:auto;"> 
+			        <label>部门经理：</label> 
+					<div class="mui-input-row mui-radio mui-left">
+			          <label>是</label> 
+			          <input type="radio" name="isManager" value="1"> 
+					</div>
+					<div class="mui-input-row mui-radio mui-left">
+			          <label>否</label> 
+			          <input type="radio" name="isManager" value="0" checked> 
+					</div>
+			  	 </div>-->
+		  </form>
+		</div>
+		<script src="base/jquery.min.js"></script>
+		<script src="base/mui.min.js"></script> 
+		<script src="base/o2o.js"></script>
+		<script src="js/customer-emp-add.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style>
+			.mui-table-view-cell .mui-table-view 
+			.mui-table-view-cell:last-child:after, 
+			.mui-table-view-cell .mui-table-view:after, 
+			.mui-table-view-cell .mui-table-view:before{
+				height: 0;
+			}
+			.mui-table-view-cell{
+				margin-top: -1px;
+			}
+			.mui-table-view-cell .mui-table-view.mui-table-view-chevron{
+			  margin-right: -65px;
+			}
+			.mui-table-view-cell .mui-table-view{
+			  display: block;
+			  margin-top: 11px;
+			  margin-right: -15px;
+			  margin-bottom: -11px;
+			  margin-left: -15px;
+			  border: 0;
+			}
+			.mui-table-view-cell .mui-table-view .mui-table-view-cell{
+				padding-left: 31px;
+  				background-position: 31px 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> 
+		    <a class="mui-btn mui-btn-link mui-btn-nav mui-pull-right" type="button" id="submit">
+		   		 选择
+		    	<span class="mui-icon mui-icon-right-nav"></span>
+		  	</a>
+		    <h1 class="mui-title">选择区域</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron" id="areaContent"></ul>
+		</div>
+<script src="base/jquery.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/o2o.js"></script>
+<script type="text/javascript">
+mui.init(); 
+mui.plusReady(function(){
+	var cw = plus.webview.currentWebview();
+	var checkType = cw.checkType || 'radio';
+	var areaIds = cw.areaIds;
+	var areaType = cw.areaType;
+	if($.trim(areaIds)){
+		areaIds = areaIds.split(',');
+	}
+	console.log(checkType, areaIds);
+	var renderMenu = function(menu, parent) {
+		var checked = "";
+		if( $.inArray(menu.id.toString(), areaIds) > -1 ){
+			checked = "checked";
+		}
+		var el = $('<input name="checkarea" type="'+checkType+'" value="'+menu.id+'" '+checked+'>');
+		if(!menu.children || menu.children.length == 0) {
+			el = $('<input name="checkarea" type="'+checkType+'" value="'+menu.id+'" '+checked+'>');
+			$(parent).append(el);
+			$(parent).append('<span>'+menu.text+'</span>');
+			return parent;
+		}
+		$(parent).append(el);
+		$(parent).append('<span>'+menu.text+'</span>');
+		var ul = $('<ul class="mui-table-view mui-table-view-chevron"></ul>');
+		for(var i = 0; i < menu.children.length; ++i) {
+			var li = $('<li class="mui-table-view-cell mui-'+checkType+' mui-right"></li>');
+			renderMenu(menu.children[i], li);
+			ul.append(li);
+		}
+
+		$(parent).append(ul);
+		return parent;
+	};
+	var datas = {};
+	if( $.trim(areaType) && areaType ==1 ){
+		o2o.request({
+			url: o2o.path.customerQueryAreas,
+			data:{
+				areaType:areaType
+			},
+			success: function(respones) {
+				var list = respones.list;
+				var $html ="";
+				$(respones.list).each(function() {
+					var checked ="";
+					if(areaIds == this.areaId){
+						checked = "checked";
+					}
+					$html += '<li class="mui-table-view-cell mui-'+checkType+' mui-right">'+
+										'<input name="checkarea" type="'+checkType+'" value="'+this.areaId+'" '+checked+'>'+
+										'<span>'+this.areaName+'</span>'+
+										'</li>';
+				});
+				$('#areaContent').html($html); 
+			},
+	
+			fail: function(code, error) {
+				o2o.prompt(error);
+			}
+		});
+	}else{
+		o2o.request({
+			url: o2o.path.customerQueryAreas,
+			success: function(respones) {
+				var data = [],
+					list = respones.list;
+				for(var i = 0; i < list.length; i++) {
+					var tree = {};
+					if(!$.trim(list[i].parentId)) {
+						tree.pid = 0;
+					} else {
+						tree.pid = list[i].parentId;
+					}
+					tree.id = list[i].areaId;
+					tree.text = list[i].areaName;
+					//tree.no = list[i].areaNo;
+					data.push(tree);
+				}
+				
+				var $ul = $('<ul class="mui-table-view mui-table-view-chevron"></ul>');
+				var treedata = o2o.getTree(data, localStorage.loginInfo.areaId);
+				var	$div = $('#areaContent');
+				var treehtml = renderMenu(treedata[0], $('<li class="mui-table-view-cell mui-'+checkType+' mui-right" style="background:#eee;"></li>'));
+				$ul.append(treehtml);
+				$div.html($ul.html()); 
+			},
+	
+			fail: function(code, error) {
+				o2o.prompt(error);
+			}
+		});
+	}
+	
+	$('#submit').on('click', function() {
+		var selected = $('input[name=checkarea]:checked'),
+			areaName = [],
+			areaId = [];
+		$(selected).each(function() {
+			areaName.push($(this).next().text());
+			areaId.push($(this).val());
+		});
+		console.log(areaName,areaId);
+		var opener = plus.webview.currentWebview().opener();
+		mui.fire(opener, 'getArea', {
+			areaName: areaName,
+			areaIds: areaId,
+			areaType: areaType
+		});
+		mui.back();
+	});
+	
+});
+</script>
+</body>
+
+</html>

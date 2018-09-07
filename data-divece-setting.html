@@ -1,0 +1,111 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="icon" type="image/png" href="i/favicon.png">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="i/app-icon72x72@2x.png">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!-- <link rel="canonical" href="http://www.example.com/"> -->
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <title>首页</title>
+</head>
+  <style>
+  	.drawimg{
+  		position: relative;
+  		margin: 15px;
+  	}
+  	.drawimg>.linebg{
+  		position: absolute;
+  		top: 50%;
+  		left: 1px;
+  		right: 1px;
+  		height: 12px;
+  		padding: 2px 0;
+  		margin-top: -6px;
+  		background: #eee;
+  	}
+  	.drawimg>.linebg>.linebox{
+  		position: relative;
+  		width: 100%;
+  		height: 100%;
+  	}
+		.linebox>.dataline{
+  		position: absolute;
+  		left: 0;
+  		right: 0;
+  		height: 8px;
+  		background: #fff;
+  	}
+  	.linebox>.hand{
+  		position: absolute;
+  		left: 50%;
+  		top: 50%;
+  		width: 40px;
+  		height: 40px;
+  		margin-left: -20px;
+  		margin-top: -24px;
+  		z-index: 9999;
+  		background: url(i/hand.png) no-repeat center;
+  	}
+  	#left,#right{
+  		width: 24px;
+  		height: 24px;
+  		background: #fff;
+  		border-radius: 50%;
+  		margin: -8px -12px;
+  		border: 1px solid #ddd;
+  	}
+  	
+  </style>
+</head>
+<body data-page="dataAlarm" class="am-with-fixed-header am-with-fixed-navbar">
+  <!--header start  -->
+<header data-am-widget="header" class="am-header am-header-default am-header-fixed">
+  <div class="am-header-left am-header-nav">
+      <a href="javascript:history.go(-1)">
+          <img class="am-header-icon-custom" src="fonts/left.svg">
+      </a>
+  </div>
+  <h1 class="am-header-title">设置划线</h1>
+</header>
+<!--header end  -->
+
+<div class="am-page">
+    <div class="drawimg" id="imgbox">
+    	<img src="" alt="" style="width: 100%;height: 240px;background: #fff;"/>
+    	<div class="linebg">
+    		<div class="linebox">
+		    	<div class="dataline">
+		    		<span class="am-fl" id="left"></span>
+		    		<span class="am-fr" id="right"></span>
+		    	</div>
+		    	<span id="hand" class="hand"></span>
+    		</div>
+    	</div>
+    </div> 
+</div>
+<script src="base/jquery.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="js/data-divece-setting.js"></script> 
+</body>
+</html>

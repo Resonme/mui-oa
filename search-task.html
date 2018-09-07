@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <style type="text/css">
+  	html,body{
+  		position: relative;
+  		height: 100%;
+  	}
+  	#pullrefresh{
+  		padding-top: 83px;
+  	}
+  	.mui-backdrop{
+  		top: 83px;
+  	}
+  	.mui-plus-pullrefresh .mui-scroll-wrapper, .mui-plus-pullrefresh .mui-slider-group{
+  		top: 83px;
+  	}
+  	
+		.mui-popover .mui-row>[class*=mui-col-xs]{
+			height: 300px;
+		}
+  </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">
+    	<form class="mui-input-group" onsubmit="return false">
+			<div class="mui-search mui-input-row">
+				<input type="search" class="mui-input-clear" id="shopNo" placeholder="请输入店铺编号/名称/地址">
+			</div>
+		</form>
+    </h1>
+</header>
+<div class="mui-row mui-text-center o2o-select">
+	<div class="mui-col-xs-4 o2o-select-item" data-href="#areaPopover">
+		<span id="areaText">所属区域</span><span class="icon-down"></span>
+	</div>
+	<div class="mui-col-xs-4 o2o-select-item" data-href="#statePopover">
+		<span id="stateText">任务状态</span><span class="icon-down"></span>
+	</div>
+	<div class="mui-col-xs-4 o2o-select-item" data-href="#typePopover">
+		<span id="typeText">任务类型</span><span class="icon-down"></span>
+	</div>
+</div>
+<div class="mui-scroll-wrapper" id="pullrefresh">
+    <div class="mui-scroll">
+        <ul class="mui-table-view o2o-list" id="list"></ul> 
+    </div>
+</div>
+
+<div id="areaPopover" class="mui-popover">
+	<div class="mui-scroll-wrapper">
+	    <div class="mui-scroll">
+	        <ul class="mui-table-view o2o-list-check" id="areaPanel">
+				<li class="mui-table-view-cell mui-active"><a><span class="text">全部</span><span class="mui-badge mui-badge-inverted">10</span></a></li>
+			</ul>
+	    </div>
+	</div>
+</div>
+<div id="statePopover" class="mui-popover">
+	<div class="mui-scroll-wrapper">
+	    <div class="mui-scroll">
+	        <ul class="mui-table-view" id="statePanel">
+				<li class="mui-table-view-cell mui-active">
+					<a><span class="text">全部</span></span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-examinestate="0">
+					<a><span class="text">待审核</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-examinestate="1">
+					<a><span class="text">进行中</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-examinestate="2">
+					<a><span class="text">审核未通过</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+			</ul>
+	    </div>
+	</div>
+</div>
+<div id="typePopover" class="mui-popover">
+	<div class="mui-scroll-wrapper">
+	    <div class="mui-scroll">
+			<ul class="mui-table-view" id="typePanel">
+				<li class="mui-table-view-cell mui-active">
+					<a><span class="text">全部</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-servicetype="0">
+					<a><span class="text">安装</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-servicetype="3">
+					<a><span class="text">移机</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-servicetype="4">
+					<a><span class="text">拆机</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-servicetype="2">
+					<a><span class="text">设备变更</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+				<li class="mui-table-view-cell" data-servicetype="5">
+					<a><span class="text">套餐变更</span><span class="mui-badge mui-badge-inverted">5</span></a>
+				</li>
+			</ul>
+	    </div>
+	</div>
+</div>
+<script src="base/jquery.min.js"></script>
+<script src="base/handlebars.min.js"></script>
+<script src="base/mui.min.js"></script>
+<script src="base/o2o.js"></script>
+<script src="lib/time/time.js"></script>
+<script src="js/message-install-list.js"></script>
+</body>
+</html>
